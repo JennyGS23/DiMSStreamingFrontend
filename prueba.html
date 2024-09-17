@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DiMS Streaming</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white">
+
+    <!-- Contenedor principal -->
+    <div class="flex h-screen">
+
+        <!-- Sidebar (Tu Biblioteca) -->
+        <div class="w-1/4 bg-gray-800 p-4">
+            <h1 class="text-3xl font-bold mb-6 text-teal-400">DiMS Streaming</h1>
+            <h2 class="text-xl mb-4">Your Library</h2>
+
+            <!-- Sección de música -->
+            <div class="mb-8">
+                <h3 class="text-lg mb-2">Music</h3>
+                <div class="mb-4">
+                    <p class="text-sm font-bold">CUUUUuuuuuuute</p>
+                    <p class="text-sm text-gray-400">ROSALÍA</p>
+                </div>
+                <div class="mb-4">
+                    <p class="text-sm font-bold">Ice Cream (with Selena Gómez)</p>
+                    <p class="text-sm text-gray-400">BLACKPINK</p>
+                </div>
+                <div class="mb-4">
+                    <p class="text-sm font-bold">JUST LIKE WE NEVER SAID GOODBYE</p>
+                    <p class="text-sm text-gray-400">SOPHIE</p>
+                </div>
+            </div>
+
+            <!-- Sección de videos -->
+            <div>
+                <h3 class="text-lg mb-2">Videos</h3>
+                <div class="mb-4">
+                    <p class="text-sm font-bold">What Age Are Puppies Ready to Be Adopted?</p>
+                    <p class="text-sm text-gray-400">Discover Costa Rica</p>
+                </div>
+                <div class="mb-4">
+                    <p class="text-sm font-bold">La Fortuna: What to Expect</p>
+                    <p class="text-sm text-gray-400">Discover Costa Rica</p>
+                </div>
+                <div>
+                    <p class="text-sm font-bold">Places to Visit in 2024 (Complete guide)</p>
+                    <p class="text-sm text-gray-400">Discover Costa Rica</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección principal -->
+        <div class="flex-1 bg-gray-700 p-6">
+            <!-- Sección de recomendaciones -->
+            <div class="mb-6">
+                <h2 class="text-2xl mb-4">Recommendations</h2>
+                <div class="relative">
+                    <img src="https://via.placeholder.com/800x300" alt="Recomendaciones" class="w-full h-64 object-cover rounded-lg">
+                    <div class="absolute bottom-4 left-4">
+                        <p class="text-lg font-bold">Places to visit in 2024 (Complete guide)</p>
+                        <p class="text-sm text-gray-400">Discover Costa Rica</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección de continuar reproduciendo -->
+            <div class="mb-6">
+                <h2 class="text-2xl mb-4">Continue Playing</h2>
+                <div class="grid grid-cols-4 gap-4">
+                    <!-- Item ejemplo -->
+                    <div class="bg-gray-800 p-4 rounded-lg">
+                        <img src="https://via.placeholder.com/150" alt="Video" class="w-full h-24 object-cover rounded-md mb-2">
+                        <p class="text-sm font-bold">What Age Are Puppies Ready to Be Adopted?</p>
+                        <p class="text-sm text-gray-400">Dog Life</p>
+                    </div>
+                    <div class="bg-gray-800 p-4 rounded-lg">
+                        <img src="https://via.placeholder.com/150" alt="Video" class="w-full h-24 object-cover rounded-md mb-2">
+                        <p class="text-sm font-bold">11 Most Unique Houses in the World</p>
+                        <p class="text-sm text-gray-400">Sofia Blanco</p>
+                    </div>
+                    <div class="bg-gray-800 p-4 rounded-lg">
+                        <img src="https://via.placeholder.com/150" alt="Video" class="w-full h-24 object-cover rounded-md mb-2">
+                        <p class="text-sm font-bold">Ice Cream (with Selena Gomez)</p>
+                        <p class="text-sm text-gray-400">BLACKPINK</p>
+                    </div>
+                    <div class="bg-gray-800 p-4 rounded-lg">
+                        <img src="https://via.placeholder.com/150" alt="Video" class="w-full h-24 object-cover rounded-md mb-2">
+                        <p class="text-sm font-bold">La Fortuna: What to Expect</p>
+                        <p class="text-sm text-gray-400">Discover Costa Rica</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección de música y videos -->
+            <div>
+                <h2 class="text-2xl mb-4">Music</h2>
+                <div class="grid grid-cols-6 gap-4">
+                    <!-- Música individual -->
+                    <div class="bg-gray-800 p-4 rounded-lg">
+                        <img src="https://via.placeholder.com/100" alt="Album" class="w-full h-24 object-cover rounded-md mb-2">
+                        <p class="text-sm font-bold">JUST LIKE WE NEVER SAID GOODBYE</p>
+                        <p class="text-sm text-gray-400">SOPHIE</p>
+                    </div>
+                    <div class="bg-gray-800 p-4 rounded-lg">
+                        <img src="https://via.placeholder.com/100" alt="Album" class="w-full h-24 object-cover rounded-md mb-2">
+                        <p class="text-sm font-bold">CUUUUuuuuuuute</p>
+                        <p class="text-sm text-gray-400">ROSALÍA</p>
+                    </div>
+                    <!-- Más ítems aquí -->
+                </div>
+            </div>
+
+            <!-- Controles de reproducción -->
+            <div class="mt-8">
+                <div class="flex items-center justify-between">
+                    <button class="text-lg">⏮</button>
+                    <button class="text-lg">⏯</button>
+                    <button class="text-lg">⏭</button>
+                </div>
+                <div class="bg-gray-600 h-2 w-full mt-2 rounded-full">
+                    <div class="bg-teal-400 h-2 rounded-full" style="width: 50%;"></div>
+                </div>
+                <div class="flex justify-between mt-1">
+                    <span>0:51</span>
+                    <span>3:14</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+
+
+ <!-- Sección de continuar reproduciendo -->
+            <!-- <div class=" bg-gray-100 items-center justify-center min-h-screen">
+                <h2 class="text-white text-xl mb-20">Continue Playing</h2>
+                
+                <div class="scroll-container">
+                    <div class="image-item">
+                        <img src="img/puppies.png" class="rounded-md">
+                    </div>
+                    <div class="image-item">
+                        <img src="img/houses.png" class="rounded-md">
+                    </div>
+                    <div class="image-item">
+                        <img src="img/icecream.png" class="rounded-md">
+                    </div>
+                    <div class="image-item">
+                        <img src="img/fortuna.png" class="rounded-md">
+                    </div>
+                    <div class="image-item">
+                        <img src="img/harmony.png" class="rounded-md">
+                    </div>
+                    <div class="image-item">
+                        <img src="img/cats.png" class="rounded-md">
+                    </div>
+                    <div class="image-item">
+                        <i class="fas fa-regular fa-circle-plus text-color-components"></i>
+
+                    </div>
+                </div>
+            </div> -->

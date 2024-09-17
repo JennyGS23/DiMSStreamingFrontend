@@ -12,9 +12,9 @@ module.exports = {
         'color-principal': '#000505',
         'color-secondary': '#282B28',
       },
-      backgroundImage: {
-        'fond-recommends': "url('/img/recomendations.png')",
-      }
+      backgroundImage: theme => ({
+        'recommendations-fond': "url('../img/recommendations.png')"
+      }),
     },
   },
   plugins: [],

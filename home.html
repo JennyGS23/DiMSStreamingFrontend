@@ -4,31 +4,33 @@
     <meta charset="UTF-8">
     <title>Home</title>
     <link href="./output.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
 <body class="bg-principal font-sans">
     <header>
-        <nav class="bg-color-principal p-10 " >
+        <nav class="bg-color-principal p-10 h-20" >
             <h1 class="text-color-components text-2xl">DiMS Streaming</h1>
         </nav>
     </header>
 
     <div id="home" class="flex h-screen">
-        <div id="yourLibrary" class="w-1/4 bg-color-secondary p-4">
-            <h2 class="text-white text-xl">Your Library</h2>
+        <div id="yourLibrary" class=" bg-color-secondary p-4">
+            <h2 class="text-white text-xl mb-2">Your Library</h2>
         
             <div class="mb-8">
-                <div class="max-h-48 overflow-y-scroll scrollbar:bg-red">
+                <div class="max-h-48 overflow-y-scroll">
                     <h3 class="text-lg mb-2 text-center text-white">Music</h3>
-                    <div class="mb-4 p-2 bg-color-principal rounded-md">
+                    <div class="mb-4 p-2 bg-color-principal rounded-md mr-1">
                         <p class="text-sm text-white font-bold">CUUUUuuuuuuute</p>
                         <p class="text-sm text-white">ROSALÍA</p>
                     </div>
-                    <div class="mb-4 p-2 bg-color-principal rounded-md">
+                    <div class="mb-4 p-2 bg-color-principal rounded-md mr-1">
                         <p class="text-sm text-white font-bold">Ice Cream (with Selena Gómez)</p>
                         <p class="text-sm text-white">BLACKPINK</p>
                     </div>
-                    <div class="mb-4 p-2 bg-color-principal rounded-md">
+                    <div class="mb-4 p-2 bg-color-principal rounded-md mr-1">
                         <p class="text-sm text-white font-bold">JUST LIKE WE NEVER SAID GOODBYE</p>
                         <p class="text-sm text-white">SOPHIE</p>
                     </div>
@@ -36,17 +38,17 @@
             </div>
 
             <div class="mb-8">
-                <div class="max-h-48 overflow-y-scroll scrollbar:bg-red">
+                <div class="max-h-48 overflow-y-scroll ">
                     <h3 class="text-lg mb-2 text-center text-white">Videos</h3>
-                    <div class="mb-4 p-2 bg-color-principal rounded-md">
+                    <div class="mb-4 p-2 bg-color-principal rounded-md mr-1">
                         <p class="text-sm text-white font-bold">What Age are Puppies Ready to Be Adopted?</p>
                         <p class="text-sm text-white">Discover Costa Rica</p>
                     </div>
-                    <div class="mb-4 p-2 bg-color-principal rounded-md">
+                    <div class="mb-4 p-2 bg-color-principal rounded-md mr-1">
                         <p class="text-sm text-white font-bold">La Fortuna: What to Expect</p>
                         <p class="text-sm text-white">Dog life</p>
                     </div>
-                    <div class="mb-4 p-2 bg-color-principal rounded-md">
+                    <div class="mb-4 p-2 bg-color-principal rounded-md mr-1">
                         <p class="text-sm text-white font-bold">Places to visit in 2024 (Complete guide)</p>
                         <p class="text-sm text-white">Discover Costa Rica</p>
                     </div>
@@ -56,51 +58,253 @@
         </div>
 
 
-        <div id="main" class="flex-1 bg-gray-700 p-6">
-            <!-- Sección de recomendaciones -->
+        <div id="main" class="flex-1  w-full bg-color-secondary">
+            <!-- Recommendations section-->
             <div class="mb-6">
-                <div  class="relative">
-                    <h2 class="text-2xl mb-4">Recommendations</h2>
-                    <div class="">
-                        <p class="text-lg font-bold">Places to visit in 2024 (Complete guide)</p>
-                        <p class="text-sm text-gray-400">Discover Costa Rica</p>
+                <div class=" relative rounded-md ">  
+                    <div class="relative">
+                        <img src="img/recommendations.png" alt="Recommendations" class="w-full h-40 object-cover">
+                        <div class="absolute top-3 left-4">
+                            <p class="text-3xl font-bold text-white">Recommendations</p>
+                        </div>
+                        <div class="text-white absolute top-0 right-0 w-80 h-full bg-color-principal bg-opacity-75 p-4 rounded-md">
+                            <div class="">
+                                <h2 class="text-xl font-semibold">Places to visit in 2024</h2>
+                                <p class="text-sm">(Complete guide)</p>
+                                <p class="text-sm">Discover Costa Rica</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+        
+            <!-- Continue Playing-->
+            <div class="flex flex-col justify-center">
+                <h2 class="text-white text-xl mb-6">Continue Playing</h2>
+                <div class="relative w-full max-w-5xl mx-auto">
+                    <!-- Left button -->
+                    <button id="prevBtn" class="absolute left-0 top-1/3 transform -translate-y-1/2 text-color-components p-3 rounded-md bg-color-principal bg-opacity-70 hover:bg-color-secondary focus:outline-none z-10">
+                        <i class="fas fa-duotone fa-solid fa-backward"></i> <!-- Cambiado a la clase correcta -->
+                    </button>
+                    
+                    
+            
+                    <!-- Image container with horizontal scroll-->
+                    <div id="imageContainer" class="flex overflow-x-auto scroll-smooth space-x-4 scrollbar-hide">
+                        <!-- Images -->
+                        <div class="relative w-40 h-40 flex-shrink-0">
+                            <img src="img/puppies.png" class="w-full h-full object-cover rounded-lg" alt="Image 1">
+                            <div class="absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm">
+                                <p class="mb-1">What Age Are Puppies Ready to Be Adopted?</p>
+                                <p class="text-xs">Dog Life</p>
+                            </div>
+                        </div>
+                        <div class="relative w-40 h-40 flex-shrink-0">
+                            <img src="img/harmony.png" class="w-full h-full object-cover rounded-lg" alt="Image 2">
+                            <div class="absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm">
+                                <p class="mb-1">What Age Are Puppies Ready to Be Adopted?</p>
+                                <p class="text-xs">Dog Life</p>
+                            </div>
+                        </div>
+                        <div class="relative w-40 h-40 flex-shrink-0">
+                            <img src="img/houses.png" class="w-full h-full object-cover rounded-lg" alt="Image 3">
+                            <div class="absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm">
+                                <p class="mb-1">Cozy Houses</p>
+                                <p class="text-xs">Home & Living</p>
+                            </div>
+                        </div>
+                        <div class="relative w-40 h-40 flex-shrink-0">
+                            <img src="img/icecream.png" class="w-full h-full object-cover rounded-lg" alt="Image 4">
+                            <div class="absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm">
+                                <p class="mb-1">Delicious Ice Cream</p>
+                                <p class="text-xs">Treat Yourself</p>
+                            </div>
+                        </div>
+                        <div class="relative w-40 h-40 flex-shrink-0">
+                            <img src="img/fortuna.png" class="w-full h-full object-cover rounded-lg" alt="Image 5">
+                            <div class="absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm">
+                                <p class="mb-1">Fortune Awaits</p>
+                                <p class="text-xs">Good Luck</p>
+                            </div>
+                        </div>
+                        <div class="relative w-40 h-40 flex-shrink-0">
+                            <img src="img/harmony.png" class="w-full h-full object-cover rounded-lg" alt="Image 6">
+                            <div class="absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm">
+                                <p class="mb-1">Find Harmony</p>
+                                <p class="text-xs">Peace & Balance</p>
+                            </div>
+                        </div>
+                        <div class="relative w-40 h-40 flex-shrink-0">
+                            <img src="img/fortuna.png" class="w-full h-full object-cover rounded-lg" alt="Image 7">
+                            <div class="absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm">
+                                <p class="mb-1">Find Harmony</p>
+                                <p class="text-xs">Peace & Balance</p>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <!-- Right button-->
+                    <button id="nextBtn" class="absolute right-0 top-1/3 transform -translate-y-1/2 text-color-components p-3 rounded-md bg-color-principal bg-opacity-70 ">
+                        <i class="fas fa-duotone fa-solid fa-forward"></i>
+                    </button>
+                    
+                </div>
+                
+            </div>
 
-            <!-- Sección de continuar reproduciendo -->
-            <!-- <div class="mb-6">
-                <h2 class="text-2xl mb-4">Continue Playing</h2>
-                <div class="grid grid-cols-4 gap-4">
-                     Item ejemplo 
-                    <div class="bg-gray-800 p-4 rounded-lg">
-                        <img src="https://via.placeholder.com/150" alt="Video" class="w-full h-24 object-cover rounded-md mb-2">
-                        <p class="text-sm font-bold">What Age Are Puppies Ready to Be Adopted?</p>
-                        <p class="text-sm text-gray-400">Dog Life</p>
+            <!-- Music -->
+            <div class="flex flex-col justify-center">
+                <h2 class="text-white text-xl mb-6 mt-5">Music</h2>
+                <div class="relative w-full max-w-5xl mx-auto">
+                    <!-- Left button -->
+                    <button id="prevBtn" class="absolute left-0 top-1/3 transform -translate-y-1/2 text-color-components p-3 rounded-md bg-color-principal bg-opacity-70 hover:bg-color-secondary focus:outline-none z-10">
+                        <i class="fas fa-duotone fa-solid fa-backward"></i> <!-- Cambiado a la clase correcta -->
+                    </button>
+                    
+                    
+            
+                    <!-- Image container with horizontal scroll-->
+                    <div id="imageContainer" class="flex overflow-x-auto scroll-smooth space-x-4 scrollbar-hide">
+                        <!-- Images -->
+                        <div class="relative w-40 h-40 flex-shrink-0">
+                            <img src="img/puppies.png" class="w-full h-full object-cover rounded-lg" alt="Image 1">
+                            <div class="absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm">
+                                <p class="mb-1">What Age Are Puppies Ready to Be Adopted?</p>
+                                <p class="text-xs">Dog Life</p>
+                            </div>
+                        </div>
+                        <div class="relative w-40 h-40 flex-shrink-0">
+                            <img src="img/harmony.png" class="w-full h-full object-cover rounded-lg" alt="Image 2">
+                            <div class="absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm">
+                                <p class="mb-1">What Age Are Puppies Ready to Be Adopted?</p>
+                                <p class="text-xs">Dog Life</p>
+                            </div>
+                        </div>
+                        <div class="relative w-40 h-40 flex-shrink-0">
+                            <img src="img/houses.png" class="w-full h-full object-cover rounded-lg" alt="Image 3">
+                            <div class="absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm">
+                                <p class="mb-1">Cozy Houses</p>
+                                <p class="text-xs">Home & Living</p>
+                            </div>
+                        </div>
+                        <div class="relative w-40 h-40 flex-shrink-0">
+                            <img src="img/icecream.png" class="w-full h-full object-cover rounded-lg" alt="Image 4">
+                            <div class="absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm">
+                                <p class="mb-1">Delicious Ice Cream</p>
+                                <p class="text-xs">Treat Yourself</p>
+                            </div>
+                        </div>
+                        <div class="relative w-40 h-40 flex-shrink-0">
+                            <img src="img/fortuna.png" class="w-full h-full object-cover rounded-lg" alt="Image 5">
+                            <div class="absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm">
+                                <p class="mb-1">Fortune Awaits</p>
+                                <p class="text-xs">Good Luck</p>
+                            </div>
+                        </div>
+                        <div class="relative w-40 h-40 flex-shrink-0">
+                            <img src="img/harmony.png" class="w-full h-full object-cover rounded-lg" alt="Image 6">
+                            <div class="absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm">
+                                <p class="mb-1">Find Harmony</p>
+                                <p class="text-xs">Peace & Balance</p>
+                            </div>
+                        </div>
+                        <div class="relative w-40 h-40 flex-shrink-0">
+                            <img src="img/fortuna.png" class="w-full h-full object-cover rounded-lg" alt="Image 7">
+                            <div class="absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm">
+                                <p class="mb-1">Find Harmony</p>
+                                <p class="text-xs">Peace & Balance</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="bg-gray-800 p-4 rounded-lg">
-                        <img src="https://via.placeholder.com/150" alt="Video" class="w-full h-24 object-cover rounded-md mb-2">
-                        <p class="text-sm font-bold">11 Most Unique Houses in the World</p>
-                        <p class="text-sm text-gray-400">Sofia Blanco</p>
+            
+                    <!-- Right button-->
+                    <button id="nextBtn" class="absolute right-0 top-1/3 transform -translate-y-1/2 text-color-components p-3 rounded-md bg-color-principal bg-opacity-70 ">
+                        <i class="fas fa-duotone fa-solid fa-forward"></i>
+                    </button>
+                    
+                </div>
+                
+            </div>
+
+            <!-- Videos -->
+            <div class="flex flex-col justify-center">
+                <h2 class="text-white text-xl mb-6 mt-5">Video</h2>
+                <div class="relative w-full max-w-5xl mx-auto">
+                    <!-- Left button -->
+                    <button id="prevBtn" class="absolute left-0 top-1/3 transform -translate-y-1/2 text-color-components p-3 rounded-md bg-color-principal bg-opacity-70 hover:bg-color-secondary focus:outline-none z-10">
+                        <i class="fas fa-duotone fa-solid fa-backward"></i> <!-- Cambiado a la clase correcta -->
+                    </button>
+                    
+                    
+            
+                    <!-- Image container with horizontal scroll-->
+                    <div id="imageContainer" class="flex overflow-x-auto scroll-smooth space-x-4 scrollbar-hide">
+                        <!-- Images -->
+                        <div class="relative w-40 h-40 flex-shrink-0">
+                            <img src="img/puppies.png" class="w-full h-full object-cover rounded-lg" alt="Image 1">
+                            <div class="absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm">
+                                <p class="mb-1">What Age Are Puppies Ready to Be Adopted?</p>
+                                <p class="text-xs">Dog Life</p>
+                            </div>
+                        </div>
+                        <div class="relative w-40 h-40 flex-shrink-0">
+                            <img src="img/harmony.png" class="w-full h-full object-cover rounded-lg" alt="Image 2">
+                            <div class="absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm">
+                                <p class="mb-1">What Age Are Puppies Ready to Be Adopted?</p>
+                                <p class="text-xs">Dog Life</p>
+                            </div>
+                        </div>
+                        <div class="relative w-40 h-40 flex-shrink-0">
+                            <img src="img/houses.png" class="w-full h-full object-cover rounded-lg" alt="Image 3">
+                            <div class="absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm">
+                                <p class="mb-1">Cozy Houses</p>
+                                <p class="text-xs">Home & Living</p>
+                            </div>
+                        </div>
+                        <div class="relative w-40 h-40 flex-shrink-0">
+                            <img src="img/icecream.png" class="w-full h-full object-cover rounded-lg" alt="Image 4">
+                            <div class="absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm">
+                                <p class="mb-1">Delicious Ice Cream</p>
+                                <p class="text-xs">Treat Yourself</p>
+                            </div>
+                        </div>
+                        <div class="relative w-40 h-40 flex-shrink-0">
+                            <img src="img/fortuna.png" class="w-full h-full object-cover rounded-lg" alt="Image 5">
+                            <div class="absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm">
+                                <p class="mb-1">Fortune Awaits</p>
+                                <p class="text-xs">Good Luck</p>
+                            </div>
+                        </div>
+                        <div class="relative w-40 h-40 flex-shrink-0">
+                            <img src="img/harmony.png" class="w-full h-full object-cover rounded-lg" alt="Image 6">
+                            <div class="absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm">
+                                <p class="mb-1">Find Harmony</p>
+                                <p class="text-xs">Peace & Balance</p>
+                            </div>
+                        </div>
+                        <div class="relative w-40 h-40 flex-shrink-0">
+                            <img src="img/fortuna.png" class="w-full h-full object-cover rounded-lg" alt="Image 7">
+                            <div class="absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm">
+                                <p class="mb-1">Find Harmony</p>
+                                <p class="text-xs">Peace & Balance</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="bg-gray-800 p-4 rounded-lg">
-                        <img src="https://via.placeholder.com/150" alt="Video" class="w-full h-24 object-cover rounded-md mb-2">
-                        <p class="text-sm font-bold">Ice Cream (with Selena Gomez)</p>
-                        <p class="text-sm text-gray-400">BLACKPINK</p>
-                    </div>
-                    <div class="bg-gray-800 p-4 rounded-lg">
-                        <img src="https://via.placeholder.com/150" alt="Video" class="w-full h-24 object-cover rounded-md mb-2">
-                        <p class="text-sm font-bold">La Fortuna: What to Expect</p>
-                        <p class="text-sm text-gray-400">Discover Costa Rica</p>
-                    </div>
-                </div> 
-            </div>-->
+            
+                    <!-- Right button-->
+                    <button id="nextBtn" class="absolute right-0 top-1/3 transform -translate-y-1/2 text-color-components p-3 rounded-md bg-color-principal bg-opacity-70 ">
+                        <i class="fas fa-duotone fa-solid fa-forward"></i>
+                    </button>
+                    
+                </div>
+                
+            </div>
+            
         </div>
-
+        
     </div>
     
-
-
+    <script src="botonScroll.js"></script>
 </body>
    
 </html>
