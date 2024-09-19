@@ -8,7 +8,7 @@ const nextBtnVideos = document.getElementById('nextBtnVideos');
 
 prevBtn.addEventListener('click', () => {
     imageContainer.scrollBy({
-        left: -300, // Ajusta el valor según el tamaño de las imágenes
+        left: -300, 
         behavior: 'smooth'
     });
 });
@@ -22,7 +22,7 @@ nextBtn.addEventListener('click', () => {
 
 prevBtnMusic.addEventListener('click', () => {
     musicContainer.scrollBy({
-        left: -300, // Ajusta el valor según el tamaño de las imágenes
+        left: -300,
         behavior: 'smooth'
     });
 });
@@ -36,7 +36,7 @@ nextBtnMusic.addEventListener('click', () => {
 
 prevBtnVideos.addEventListener('click', () => {
     videosContainer.scrollBy({
-        left: -300, // Ajusta el valor según el tamaño de las imágenes
+        left: -300, 
         behavior: 'smooth'
     });
 });

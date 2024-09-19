@@ -1,24 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
-    <link href="./output.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DiMS Streaming</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="./output.css" rel="stylesheet">
 </head>
-
-<body class="bg-color-principal font-sans">
-    <header>
-        <nav class="bg-color-principal p-10 h-20" >
-            <h1 class="text-color-components text-2xl">DiMS Streaming</h1>
-        </nav>
+<body class="bg-color-principal font-sans min-h-screen flex flex-col">
+    <header class="bg-color-principal p-4 md:p-6 flex justify-between items-center">
+        <h1 class="text-color-components text-xl md:text-2xl">DiMS Streaming</h1>
+        <button id="menuToggle" class="text-color-components md:hidden">
+            Menu
+        </button>
     </header>
 
-    <div id="home" class="flex h-auto overflow-y-auto pb-24">
-        <div id="yourLibrary" class=" bg-color-secondary p-4">
+    <div class="flex-1 flex flex-col md:flex-row">
+        <div id="yourLibrary" class="bg-color-secondary p-4 hidden md:block md:w-64 lg:w-80">
             <h2 class="text-white text-xl mb-2">Your Library</h2>
-        
+
             <div class="mb-6 h-80">
                 <h3 class="text-lg mb-2 text-center text-white">Music</h3>
                 <div class="max-h-72 overflow-y-scroll">
@@ -105,438 +106,406 @@
             </div>
         </div>
 
-
-        <div id="main" class="flex-1  w-full bg-color-secondary">
-            <!-- Recommendations section-->
+        <div id="main" class="flex-1 bg-color-secondary p-4 overflow-y-auto">
+            <!-- Recommendations section -->
             <div class="mb-6">
-                <div class=" relative rounded-md ">  
+                <div class="relative rounded-md">
+                    <img src="img/recommendations.png" alt="Recommendations" class="w-full h-32 md:h-48 object-cover rounded-sm">
+                    <div class="absolute top-3 left-4">
+                        <p class="text-2xl md:text-3xl font-bold text-white">Recommendations</p>
+                    </div>
+                    <div class="absolute top-0 right-0 w-full md:w-80 h-full bg-color-principal bg-opacity-75 p-4 rounded-sm">
+                        <div>
+                            <h2 class="text-lg md:text-xl font-semibold text-white">Places to visit in 2024</h2>
+                            <p class="text-sm text-white">(Complete guide)</p>
+                            <p class="text-sm text-white">Discover Costa Rica</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Continue Playing, Music, and Videos sections -->
+            <div class="space-y-6">
+                <div class="mb-6">
+                    <h2 class="text-white text-lg mb-2">Continue Playing</h2>
                     <div class="relative">
-                        <img src="img/recommendations.png" alt="Recommendations" class="w-full h-32 object-cover rounded-sm">
-                        <div class="absolute top-3 left-4">
-                            <p class="text-3xl font-bold text-white">Recommendations</p>
-                        </div>
-                        <div class="text-white absolute top-0 right-0 w-80 h-full bg-color-principal bg-opacity-75 p-4 rounded-sm">
-                            <div class="">
-                                <h2 class="text-xl font-semibold">Places to visit in 2024</h2>
-                                <p class="text-sm">(Complete guide)</p>
-                                <p class="text-sm">Discover Costa Rica</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
-            <!-- Continue Playing-->
-            <div class="flex flex-col justify-center">
-                <h2 class="text-white text-lg mb-2">Continue Playing</h2>
-                <div class="relative w-full max-w-5xl mx-auto ">
-                    <!-- Left button -->
-                    <button id="prevBtn" class="absolute left-0 top-1/3 transform -translate-y-1/2 text-color-components p-1 rounded-md bg-color-principal bg-opacity-70 hover:bg-color-secondary focus:outline-none z-10">
-                        <i class="fas fa-duotone fa-solid fa-backward"></i> 
-                    </button>
-                    <!-- Image container with horizontal scroll-->
-                    <div id="imageContainer" class="flex overflow-x-auto scroll-smooth space-x-4 scrollbar-hide ">
-                        <!-- Images -->
-                        <div class="relative w-32 h-32  flex-shrink-0 group">
-                            <img src="img/puppies.png" class="w-full h-full object-cover rounded-lg transition duration-300 group-hover:brightness-75" alt="Image 1">
-                            <div class="absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm">
-                                <p class="text-xs">What Age Are Puppies Ready to Be Adopted?</p>
-                                <p class="text-xs">Dog Life</p>
-                            </div>
-                            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                <button class="p-2 bg-white rounded-full shadow-lg flex items-center justify-center">
-                                    <i class="fa fa-play text-color-principal"></i>
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <div class="relative w-32 h-32 flex-shrink-0 group">
-                            <img src="img/harmony.png" class="w-full h-full object-cover rounded-lg transition duration-300 group-hover:brightness-75" alt="Image 2">
-                            <div class="absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm">
-                                <p class="text-xs">That´s my girl</p>
-                                <p class="text-xs">Fifth Harmony</p>
-                            </div>
-                            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                <button class="p-2 bg-white rounded-full shadow-lg flex items-center justify-center">
-                                    <i class="fa fa-play text-color-principal"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="relative w-32 h-32 flex-shrink-0 group">
-                            <img src="img/houses.png" class="w-full h-full object-cover rounded-lg transition duration-300 group-hover:brightness-75" alt="Image 3">
-                            <div class="absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm">
-                                <p class="text-xs">11 Most Unique Houses in the world</p>
-                                <p class="text-xs">Home & Living</p>
-                            </div>
-                            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                <button class="p-2 bg-white rounded-full shadow-lg flex items-center justify-center">
-                                    <i class="fa fa-play text-color-principal"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="relative w-32 h-32 flex-shrink-0 group">
-                            <img src="img/icecream.png" class="w-full h-full object-cover rounded-lg transition duration-300 group-hover:brightness-75" alt="Image 4">
-                            <div class="absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm">
-                                <p class="text-xs">Ice Cream (with Selena Gomez)</p>
-                                <p class="text-xs">Black Pink</p>
-                            </div>
-                            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                <button class="p-2 bg-white rounded-full shadow-lg flex items-center justify-center">
-                                    <i class="fa fa-play text-color-principal"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="relative w-32 h-32 flex-shrink-0 group">
-                            <img src="img/fortuna.png" class="w-full h-full object-cover rounded-lg transition duration-300 group-hover:brightness-75" alt="Image 5">
-                            <div class="absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm">
-                                <p class="text-xs">La Fortuna: What to Expect</p>
-                                <p class="text-xs">Discover Costa Rica</p>
-                            </div>
-                            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                <button class="p-2 bg-white rounded-full shadow-lg flex items-center justify-center">
-                                    <i class="fa fa-play text-color-principal"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="relative w-32 h-32 flex-shrink-0 group">
-                            <img src="img/harmony.png" class="w-full h-full object-cover rounded-lg transition duration-300 group-hover:brightness-75" alt="Image 6">
-                            <div class="absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm">
-                                <p class="text-xs">That´s my girl</p>
-                                <p class="text-xs">Fifth Harmony</p>
-                            </div>
-                            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                <button class="p-2 bg-white rounded-full shadow-lg flex items-center justify-center">
-                                    <i class="fa fa-play text-color-principal"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="relative w-32 h-32 flex-shrink-0 group">
-                            <img src="img/cats.png" class="w-full h-full object-cover rounded-lg transition duration-300 group-hover:brightness-75" alt="Image 7">
-                            <div class="absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm">
-                                <p class="text-xs">Felis silvestris catus</p>
-                                <p class="text-xs">Catsss</p>
-                            </div>
-                            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                <button class="p-2 bg-white rounded-full shadow-lg flex items-center justify-center">
-                                    <i class="fa fa-play text-color-principal"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="relative w-32 h-32 flex-shrink-0 group">
-                            <img src="img/icecream.png" class="w-full h-full object-cover rounded-lg transition duration-300 group-hover:brightness-75" alt="Image 4">
-                            <div class="absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm">
-                                <p class="text-xs">Ice Cream (with Selena Gomez)</p>
-                                <p class="text-xs">Black Pink</p>
-                            </div>
-                            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                <button class="p-2 bg-white rounded-full shadow-lg flex items-center justify-center">
-                                    <i class="fa fa-play text-color-principal"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-            
-                    <!-- Right button-->
-                    <button id="nextBtn" class="absolute right-0 top-1/3 transform -translate-y-1/2 text-color-components p-1 rounded-md bg-color-principal bg-opacity-70 ">
-                        <i class="fas fa-duotone fa-solid fa-forward"></i>
-                    </button>
-                    
-                </div>
-                
-            </div>
+                        <button id="prevBtn" class="absolute left-0 top-1/2 -translate-y-1/2 bg-color-principal bg-opacity-70 p-1 rounded-full text-color-components z-10">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <div id="imageContainer" class="flex overflow-x-auto space-x-4 py-2">
+                            <!-- Placeholder items -->
 
-            <!-- Music -->
-            <div class="flex flex-col justify-center">
-                <h2 class="text-white text-lg mb-2 mt-2">Music</h2>
-                <div class="relative w-full max-w-5xl mx-auto">
-                    <!-- Left button -->
-                    <button id="prevBtnMusic" class="absolute left-0 top-1/3 transform -translate-y-1/2 text-color-components p-1 rounded-md bg-color-principal bg-opacity-70 hover:bg-color-secondary focus:outline-none z-10">
-                        <i class="fas fa-duotone fa-solid fa-backward"></i> 
-                    </button>
-                    
-                    <!-- Image container with horizontal scroll-->
-                    <div id="musicContainer" class="flex overflow-x-auto scroll-smooth space-x-4 scrollbar-hide">
-                        <!-- Images -->
-                        <div class="relative w-32 h-32 flex-shrink-0 group">
-                            <img src="img/goodbye.png" class="w-full h-full object-cover rounded-lg transition duration-300 group-hover:brightness-75" alt="Image 1">
-                            <div class="absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm">
-                                <p class="text-xs">JUST LIKE WE NEVER SAID GOODBYE</p>
-                                <p class="text-xs">Sophie</p>
+                            <div class="relative w-32 h-32  flex-shrink-0 group">
+                                <img src="img/puppies.png" class="w-full h-full object-cover rounded-lg transition duration-300 group-hover:brightness-75" alt="Image 1">
+                                <div class="absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm">
+                                    <p class="text-xs">What Age Are Puppies Ready to Be Adopted?</p>
+                                    <p class="text-xs">Dog Life</p>
+                                </div>
+                                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    <button class="p-2 bg-white rounded-full shadow-lg flex items-center justify-center">
+                                        <i class="fa fa-play text-color-principal"></i>
+                                    </button>
+                                </div>
                             </div>
-                            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                <button class="p-2 bg-white rounded-full shadow-lg flex items-center justify-center">
-                                    <i class="fa fa-play text-color-principal"></i>
-                                </button>
+                            
+                            <div class="relative w-32 h-32 flex-shrink-0 group">
+                                <img src="img/harmony.png" class="w-full h-full object-cover rounded-lg transition duration-300 group-hover:brightness-75" alt="Image 2">
+                                <div class="absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm">
+                                    <p class="text-xs">That´s my girl</p>
+                                    <p class="text-xs">Fifth Harmony</p>
+                                </div>
+                                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    <button class="p-2 bg-white rounded-full shadow-lg flex items-center justify-center">
+                                        <i class="fa fa-play text-color-principal"></i>
+                                    </button>
+                                </div>
                             </div>
-                        </div>
-                        <div class="relative w-32 h-32 flex-shrink-0 group">
-                            <img src="img/cute.png" class="w-full h-full object-cover rounded-lg transition duration-300 group-hover:brightness-75" alt="Image 2">
-                            <div class="absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm">
-                                <p class="text-xs">CUUUUuuuuuuute</p>
-                                <p class="text-xs">Rosalía</p>
+                            <div class="relative w-32 h-32 flex-shrink-0 group">
+                                <img src="img/houses.png" class="w-full h-full object-cover rounded-lg transition duration-300 group-hover:brightness-75" alt="Image 3">
+                                <div class="absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm">
+                                    <p class="text-xs">11 Most Unique Houses in the world</p>
+                                    <p class="text-xs">Home & Living</p>
+                                </div>
+                                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    <button class="p-2 bg-white rounded-full shadow-lg flex items-center justify-center">
+                                        <i class="fa fa-play text-color-principal"></i>
+                                    </button>
+                                </div>
                             </div>
-                            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                <button class="p-2 bg-white rounded-full shadow-lg flex items-center justify-center">
-                                    <i class="fa fa-play text-color-principal"></i>
-                                </button>
+                            <div class="relative w-32 h-32 flex-shrink-0 group">
+                                <img src="img/icecream.png" class="w-full h-full object-cover rounded-lg transition duration-300 group-hover:brightness-75" alt="Image 4">
+                                <div class="absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm">
+                                    <p class="text-xs">Ice Cream (with Selena Gomez)</p>
+                                    <p class="text-xs">Black Pink</p>
+                                </div>
+                                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    <button class="p-2 bg-white rounded-full shadow-lg flex items-center justify-center">
+                                        <i class="fa fa-play text-color-principal"></i>
+                                    </button>
+                                </div>
                             </div>
-                        </div>
-                        <div class="relative w-32 h-32 flex-shrink-0 group">
-                            <img src="img/crash.png" class="w-full h-full object-cover rounded-lg transition duration-300 group-hover:brightness-75" alt="Image 3">
-                            <div class="absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm">
-                                <p class="text-xs">Crash</p>
-                                <p class="text-xs">Charli xcx</p>
+                            <div class="relative w-32 h-32 flex-shrink-0 group">
+                                <img src="img/fortuna.png" class="w-full h-full object-cover rounded-lg transition duration-300 group-hover:brightness-75" alt="Image 5">
+                                <div class="absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm">
+                                    <p class="text-xs">La Fortuna: What to Expect</p>
+                                    <p class="text-xs">Discover Costa Rica</p>
+                                </div>
+                                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    <button class="p-2 bg-white rounded-full shadow-lg flex items-center justify-center">
+                                        <i class="fa fa-play text-color-principal"></i>
+                                    </button>
+                                </div>
                             </div>
-                            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                <button class="p-2 bg-white rounded-full shadow-lg flex items-center justify-center">
-                                    <i class="fa fa-play text-color-principal"></i>
-                                </button>
+                            <div class="relative w-32 h-32 flex-shrink-0 group">
+                                <img src="img/harmony.png" class="w-full h-full object-cover rounded-lg transition duration-300 group-hover:brightness-75" alt="Image 6">
+                                <div class="absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm">
+                                    <p class="text-xs">That´s my girl</p>
+                                    <p class="text-xs">Fifth Harmony</p>
+                                </div>
+                                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    <button class="p-2 bg-white rounded-full shadow-lg flex items-center justify-center">
+                                        <i class="fa fa-play text-color-principal"></i>
+                                    </button>
+                                </div>
                             </div>
-                        </div>
-                        <div class="relative w-32 h-32 flex-shrink-0 group">
-                            <img src="img/savage.png" class="w-full h-full object-cover rounded-lg transition duration-300 group-hover:brightness-75" alt="Image 4">
-                            <div class="absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm">
-                                <p class="text-xs">Savage</p>
-                                <p class="text-xs">aespa</p>
+                            <div class="relative w-32 h-32 flex-shrink-0 group">
+                                <img src="img/cats.png" class="w-full h-full object-cover rounded-lg transition duration-300 group-hover:brightness-75" alt="Image 7">
+                                <div class="absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm">
+                                    <p class="text-xs">Felis silvestris catus</p>
+                                    <p class="text-xs">Catsss</p>
+                                </div>
+                                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    <button class="p-2 bg-white rounded-full shadow-lg flex items-center justify-center">
+                                        <i class="fa fa-play text-color-principal"></i>
+                                    </button>
+                                </div>
                             </div>
-                            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                <button class="p-2 bg-white rounded-full shadow-lg flex items-center justify-center">
-                                    <i class="fa fa-play text-color-principal"></i>
-                                </button>
+                            <div class="relative w-32 h-32 flex-shrink-0 group">
+                                <img src="img/icecream.png" class="w-full h-full object-cover rounded-lg transition duration-300 group-hover:brightness-75" alt="Image 4">
+                                <div class="absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm">
+                                    <p class="text-xs">Ice Cream (with Selena Gomez)</p>
+                                    <p class="text-xs">Black Pink</p>
+                                </div>
+                                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    <button class="p-2 bg-white rounded-full shadow-lg flex items-center justify-center">
+                                        <i class="fa fa-play text-color-principal"></i>
+                                    </button>
+                                </div>
                             </div>
-                        </div>
-                        <div class="relative w-32 h-32 flex-shrink-0 group">
-                            <img src="img/forward.png" class="w-full h-full object-cover rounded-lg transition duration-300 group-hover:brightness-75" alt="Image 5">
-                            <div class="absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm">
-                                <p class="text-xs">Fast Forward</p>
-                                <p class="text-xs">Jeon Somi</p>
-                            </div>
-                            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                <button class="p-2 bg-white rounded-full shadow-lg flex items-center justify-center">
-                                    <i class="fa fa-play text-color-principal"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="relative w-32 h-32 flex-shrink-0 group">
-                            <img src="img/mine.png" class="w-full h-full object-cover rounded-lg transition duration-300 group-hover:brightness-75" alt="Image 6">
-                            <div class="absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm">
-                                <p class="text-xs">Mine</p>
-                                <p class="text-xs">Slayyyter</p>
-                            </div>
-                            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                <button class="p-2 bg-white rounded-full shadow-lg flex items-center justify-center">
-                                    <i class="fa fa-play text-color-principal"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="relative w-32 h-32 flex-shrink-0 group">
-                            <img src="img/savage.png" class="w-full h-full object-cover rounded-lg transition duration-300 group-hover:brightness-75" alt="Image 4">
-                            <div class="absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm">
-                                <p class="text-xs">Savage</p>
-                                <p class="text-xs">aespa</p>
-                            </div>
-                            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                <button class="p-2 bg-white rounded-full shadow-lg flex items-center justify-center">
-                                    <i class="fa fa-play text-color-principal"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="relative w-32 h-32 flex-shrink-0 group">
-                            <img src="img/cute.png" class="w-full h-full object-cover rounded-lg transition duration-300 group-hover:brightness-75" alt="Image 2">
-                            <div class="absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm">
-                                <p class="text-xs">CUUUUuuuuuuute</p>
-                                <p class="text-xs">Rosalía</p>
-                            </div>
-                            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                <button class="p-2 bg-white rounded-full shadow-lg flex items-center justify-center">
-                                    <i class="fa fa-play text-color-principal"></i>
-                                </button>
-                            </div>
-                        </div>
                         
+                           
+                            <!-- Repite este bloque para más elementos -->
+                        </div>
+                        <button id="nextBtn" class="absolute right-0 top-1/2 -translate-y-1/2 bg-color-principal bg-opacity-70 p-1 rounded-full text-color-components z-10">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
                     </div>
-            
-                    <!-- Right button-->
-                    <button id="nextBtnMusic" class="absolute right-0 top-1/3 transform -translate-y-1/2 text-color-components p-1 rounded-md bg-color-principal bg-opacity-70 ">
-                        <i class="fas fa-duotone fa-solid fa-forward"></i>
-                    </button>   
+                </div>
+                <!-- Music section -->
+                <div class="mb-6">
+                    <h2 class="text-white text-lg mb-2">Music</h2>
+                    <div class="relative">
+                        <button id="prevBtnMusic" class="absolute left-0 top-1/2 -translate-y-1/2 bg-color-principal bg-opacity-70 p-1 rounded-full text-color-components z-10">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <div id="musicContainer" class="flex overflow-x-auto space-x-4 py-2">
+                            <!-- Placeholder items -->
+                            <div class="relative w-32 h-32 flex-shrink-0 group">
+                                <img src="img/goodbye.png" class="w-full h-full object-cover rounded-lg transition duration-300 group-hover:brightness-75" alt="Image 1">
+                                <div class="absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm">
+                                    <p class="text-xs">JUST LIKE WE NEVER SAID GOODBYE</p>
+                                    <p class="text-xs">Sophie</p>
+                                </div>
+                                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    <button class="p-2 bg-white rounded-full shadow-lg flex items-center justify-center">
+                                        <i class="fa fa-play text-color-principal"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="relative w-32 h-32 flex-shrink-0 group">
+                                <img src="img/cute.png" class="w-full h-full object-cover rounded-lg transition duration-300 group-hover:brightness-75" alt="Image 2">
+                                <div class="absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm">
+                                    <p class="text-xs">CUUUUuuuuuuute</p>
+                                    <p class="text-xs">Rosalía</p>
+                                </div>
+                                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    <button class="p-2 bg-white rounded-full shadow-lg flex items-center justify-center">
+                                        <i class="fa fa-play text-color-principal"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="relative w-32 h-32 flex-shrink-0 group">
+                                <img src="img/crash.png" class="w-full h-full object-cover rounded-lg transition duration-300 group-hover:brightness-75" alt="Image 3">
+                                <div class="absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm">
+                                    <p class="text-xs">Crash</p>
+                                    <p class="text-xs">Charli xcx</p>
+                                </div>
+                                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    <button class="p-2 bg-white rounded-full shadow-lg flex items-center justify-center">
+                                        <i class="fa fa-play text-color-principal"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="relative w-32 h-32 flex-shrink-0 group">
+                                <img src="img/savage.png" class="w-full h-full object-cover rounded-lg transition duration-300 group-hover:brightness-75" alt="Image 4">
+                                <div class="absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm">
+                                    <p class="text-xs">Savage</p>
+                                    <p class="text-xs">aespa</p>
+                                </div>
+                                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    <button class="p-2 bg-white rounded-full shadow-lg flex items-center justify-center">
+                                        <i class="fa fa-play text-color-principal"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="relative w-32 h-32 flex-shrink-0 group">
+                                <img src="img/forward.png" class="w-full h-full object-cover rounded-lg transition duration-300 group-hover:brightness-75" alt="Image 5">
+                                <div class="absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm">
+                                    <p class="text-xs">Fast Forward</p>
+                                    <p class="text-xs">Jeon Somi</p>
+                                </div>
+                                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    <button class="p-2 bg-white rounded-full shadow-lg flex items-center justify-center">
+                                        <i class="fa fa-play text-color-principal"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="relative w-32 h-32 flex-shrink-0 group">
+                                <img src="img/mine.png" class="w-full h-full object-cover rounded-lg transition duration-300 group-hover:brightness-75" alt="Image 6">
+                                <div class="absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm">
+                                    <p class="text-xs">Mine</p>
+                                    <p class="text-xs">Slayyyter</p>
+                                </div>
+                                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    <button class="p-2 bg-white rounded-full shadow-lg flex items-center justify-center">
+                                        <i class="fa fa-play text-color-principal"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="relative w-32 h-32 flex-shrink-0 group">
+                                <img src="img/savage.png" class="w-full h-full object-cover rounded-lg transition duration-300 group-hover:brightness-75" alt="Image 4">
+                                <div class="absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm">
+                                    <p class="text-xs">Savage</p>
+                                    <p class="text-xs">aespa</p>
+                                </div>
+                                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    <button class="p-2 bg-white rounded-full shadow-lg flex items-center justify-center">
+                                        <i class="fa fa-play text-color-principal"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="relative w-32 h-32 flex-shrink-0 group">
+                                <img src="img/cute.png" class="w-full h-full object-cover rounded-lg transition duration-300 group-hover:brightness-75" alt="Image 2">
+                                <div class="absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm">
+                                    <p class="text-xs">CUUUUuuuuuuute</p>
+                                    <p class="text-xs">Rosalía</p>
+                                </div>
+                                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    <button class="p-2 bg-white rounded-full shadow-lg flex items-center justify-center">
+                                        <i class="fa fa-play text-color-principal"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <!-- Repite este bloque para más elementos -->
+                        </div>
+                        <button id="nextBtnMusic" class="absolute right-0 top-1/2 -translate-y-1/2 bg-color-principal bg-opacity-70 p-1 rounded-full text-color-components z-10">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+                <!-- Videos section -->
+                <div class="mb-6">
+                    <h2 class="text-white text-lg mb-2">Videos</h2>
+                    <div class="relative">
+                        <button id="prevBtnVideos" class="absolute left-0 top-1/2 -translate-y-1/2 bg-color-principal bg-opacity-70 p-1 rounded-full text-color-components z-10">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        
+                        <div id="videosContainer" class="flex overflow-x-auto scroll-smooth space-x-4 scrollbar-hide">
+                            <!-- Placeholder items -->
+                            <div class="relative w-32 h-32 flex-shrink-0 group">
+                                <img src="img/puppies.png" class="w-full h-full object-cover rounded-lg transition duration-300 group-hover:brightness-75" alt="Image 1">
+                                <div class="absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm">
+                                    <p class="text-xs">What Age Are Puppies Ready to Be Adopted?</p>
+                                    <p class="text-xs">Dog Life</p>
+                                </div>
+                                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    <button class="p-2 bg-white rounded-full shadow-lg flex items-center justify-center">
+                                        <i class="fa fa-play text-color-principal"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="relative w-32 h-32 flex-shrink-0 group">
+                                <img src="img/harmony.png" class="w-full h-full object-cover rounded-lg transition duration-300 group-hover:brightness-75" alt="Image 2">
+                                <div class="absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm">
+                                    <p class="text-xs">What Age Are Puppies Ready to Be Adopted?</p>
+                                    <p class="text-xs">Dog Life</p>
+                                </div>
+                                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    <button class="p-2 bg-white rounded-full shadow-lg flex items-center justify-center">
+                                        <i class="fa fa-play text-color-principal"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="relative w-32 h-32 flex-shrink-0 group">
+                                <img src="img/houses.png" class="w-full h-full object-cover rounded-lg transition duration-300 group-hover:brightness-75" alt="Image 3">
+                                <div class="absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm">
+                                    <p class="text-xs">Cozy Houses</p>
+                                    <p class="text-xs">Home & Living</p>
+                                </div>
+                                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    <button class="p-2 bg-white rounded-full shadow-lg flex items-center justify-center">
+                                        <i class="fa fa-play text-color-principal"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="relative w-32 h-32 flex-shrink-0 group">
+                                <img src="img/icecream.png" class="w-full h-full object-cover rounded-lg transition duration-300 group-hover:brightness-75" alt="Image 4">
+                                <div class="absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm">
+                                    <p class="text-xs">Delicious Ice Cream</p>
+                                    <p class="text-xs">Treat Yourself</p>
+                                </div>
+                                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    <button class="p-2 bg-white rounded-full shadow-lg flex items-center justify-center">
+                                        <i class="fa fa-play text-color-principal"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="relative w-32 h-32 flex-shrink-0 group">
+                                <img src="img/fortuna.png" class="w-full h-full object-cover rounded-lg transition duration-300 group-hover:brightness-75" alt="Image 5">
+                                <div class="absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm">
+                                    <p class="text-xs">Fortune Awaits</p>
+                                    <p class="text-xs">Good Luck</p>
+                                </div>
+                                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    <button class="p-2 bg-white rounded-full shadow-lg flex items-center justify-center">
+                                        <i class="fa fa-play text-color-principal"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="relative w-32 h-32 flex-shrink-0 group">
+                                <img src="img/harmony.png" class="w-full h-full object-cover rounded-lg transition duration-300 group-hover:brightness-75" alt="Image 6">
+                                <div class="absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm">
+                                    <p class="text-xs">Find Harmony</p>
+                                    <p class="text-xs">Peace & Balance</p>
+                                </div>
+                                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    <button class="p-2 bg-white rounded-full shadow-lg flex items-center justify-center">
+                                        <i class="fa fa-play text-color-principal"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="relative w-32 h-32 flex-shrink-0 group">
+                                <img src="img/fortuna.png" class="w-full h-full object-cover rounded-lg transition duration-300 group-hover:brightness-75" alt="Image 7">
+                                <div class="absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm">
+                                    <p class="text-xs">Find Harmony</p>
+                                    <p class="text-xs">Peace & Balance</p>
+                                </div>
+                                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    <button class="p-2 bg-white rounded-full shadow-lg flex items-center justify-center">
+                                        <i class="fa fa-play text-color-principal"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="relative w-32 h-32 flex-shrink-0 group">
+                                <img src="img/puppies.png" class="w-full h-full object-cover rounded-lg transition duration-300 group-hover:brightness-75" alt="Image 1">
+                                <div class="absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm">
+                                    <p class="text-xs">What Age Are Puppies Ready to Be Adopted?</p>
+                                    <p class="text-xs">Dog Life</p>
+                                </div>
+                                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    <button class="p-2 bg-white rounded-full shadow-lg flex items-center justify-center">
+                                        <i class="fa fa-play text-color-principal"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                           
+                        </div>
+                        <button id="nextBtnVideos" class="absolute right-0 top-1/2 -translate-y-1/2 bg-color-principal bg-opacity-70 p-1 rounded-full text-color-components z-10">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
-
-            <!-- Videos -->
-            <div class="flex flex-col justify-center">
-                <h2 class="text-white text-lg mb-4 mt-2">Video</h2>
-                <div class="relative w-full max-w-5xl mx-auto">
-                    <!-- Left button -->
-                    <button id="prevBtnVideos" class="absolute left-0 top-1/3 transform -translate-y-1/2 text-color-components p-1 rounded-md bg-color-principal bg-opacity-70  z-10">
-                        <i class="fas fa-duotone fa-solid fa-backward"></i> 
-                    </button>
-                    
-                    <!-- Image container with horizontal scroll-->
-                    <div id="videosContainer" class="flex overflow-x-auto scroll-smooth space-x-4 scrollbar-hide">
-                        <!-- Images -->
-                        <div class="relative w-32 h-32 flex-shrink-0 group">
-                            <img src="img/puppies.png" class="w-full h-full object-cover rounded-lg transition duration-300 group-hover:brightness-75" alt="Image 1">
-                            <div class="absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm">
-                                <p class="text-xs">What Age Are Puppies Ready to Be Adopted?</p>
-                                <p class="text-xs">Dog Life</p>
-                            </div>
-                            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                <button class="p-2 bg-white rounded-full shadow-lg flex items-center justify-center">
-                                    <i class="fa fa-play text-color-principal"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="relative w-32 h-32 flex-shrink-0 group">
-                            <img src="img/harmony.png" class="w-full h-full object-cover rounded-lg transition duration-300 group-hover:brightness-75" alt="Image 2">
-                            <div class="absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm">
-                                <p class="text-xs">What Age Are Puppies Ready to Be Adopted?</p>
-                                <p class="text-xs">Dog Life</p>
-                            </div>
-                            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                <button class="p-2 bg-white rounded-full shadow-lg flex items-center justify-center">
-                                    <i class="fa fa-play text-color-principal"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="relative w-32 h-32 flex-shrink-0 group">
-                            <img src="img/houses.png" class="w-full h-full object-cover rounded-lg transition duration-300 group-hover:brightness-75" alt="Image 3">
-                            <div class="absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm">
-                                <p class="text-xs">Cozy Houses</p>
-                                <p class="text-xs">Home & Living</p>
-                            </div>
-                            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                <button class="p-2 bg-white rounded-full shadow-lg flex items-center justify-center">
-                                    <i class="fa fa-play text-color-principal"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="relative w-32 h-32 flex-shrink-0 group">
-                            <img src="img/icecream.png" class="w-full h-full object-cover rounded-lg transition duration-300 group-hover:brightness-75" alt="Image 4">
-                            <div class="absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm">
-                                <p class="text-xs">Delicious Ice Cream</p>
-                                <p class="text-xs">Treat Yourself</p>
-                            </div>
-                            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                <button class="p-2 bg-white rounded-full shadow-lg flex items-center justify-center">
-                                    <i class="fa fa-play text-color-principal"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="relative w-32 h-32 flex-shrink-0 group">
-                            <img src="img/fortuna.png" class="w-full h-full object-cover rounded-lg transition duration-300 group-hover:brightness-75" alt="Image 5">
-                            <div class="absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm">
-                                <p class="text-xs">Fortune Awaits</p>
-                                <p class="text-xs">Good Luck</p>
-                            </div>
-                            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                <button class="p-2 bg-white rounded-full shadow-lg flex items-center justify-center">
-                                    <i class="fa fa-play text-color-principal"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="relative w-32 h-32 flex-shrink-0 group">
-                            <img src="img/harmony.png" class="w-full h-full object-cover rounded-lg transition duration-300 group-hover:brightness-75" alt="Image 6">
-                            <div class="absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm">
-                                <p class="text-xs">Find Harmony</p>
-                                <p class="text-xs">Peace & Balance</p>
-                            </div>
-                            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                <button class="p-2 bg-white rounded-full shadow-lg flex items-center justify-center">
-                                    <i class="fa fa-play text-color-principal"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="relative w-32 h-32 flex-shrink-0 group">
-                            <img src="img/fortuna.png" class="w-full h-full object-cover rounded-lg transition duration-300 group-hover:brightness-75" alt="Image 7">
-                            <div class="absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm">
-                                <p class="text-xs">Find Harmony</p>
-                                <p class="text-xs">Peace & Balance</p>
-                            </div>
-                            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                <button class="p-2 bg-white rounded-full shadow-lg flex items-center justify-center">
-                                    <i class="fa fa-play text-color-principal"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="relative w-32 h-32 flex-shrink-0 group">
-                            <img src="img/puppies.png" class="w-full h-full object-cover rounded-lg transition duration-300 group-hover:brightness-75" alt="Image 1">
-                            <div class="absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm">
-                                <p class="text-xs">What Age Are Puppies Ready to Be Adopted?</p>
-                                <p class="text-xs">Dog Life</p>
-                            </div>
-                            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                <button class="p-2 bg-white rounded-full shadow-lg flex items-center justify-center">
-                                    <i class="fa fa-play text-color-principal"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-            
-                    <!-- Right button-->
-                    <button id="nextBtnVideos" class="absolute right-0 top-1/3 transform -translate-y-1/2 text-color-components p-1 rounded-md bg-color-principal bg-opacity-70 ">
-                        <i class="fas fa-duotone fa-solid fa-forward"></i>
-                    </button>
-                    
-                </div>
-                
-            </div>
-            
+            <div class="h-20  max-sm:h-40"></div>
         </div>
-        <div class="fixed inset-x-0 bottom-0 bg-color-principal p-4 z-20">
-            
-            <div class="flex items-center mb-2 w-full">
-                <!-- Song information -->
-                <div class="flex items-center">
-                    <!-- Image of the song -->
-                    <img src="img/fortuna.png" alt="Canción" class="w-16 h-16 rounded-lg mr-4">
-                    <!-- Song name and subtitle -->
-                    <div class="text-white">
-                        <p class="font-bold">Places to visit in 2024</p>
-                        <p class="text-sm text-gray-400">Discover Costa Rica</p>
-                    </div>
-                </div>
-        
-                
-                <div class="flex flex-col items-center justify-center w-10/12">
-                    <!-- Music controls -->
-                    <div class="mb-2">
-                        <button class="text-white mx-2">
-                            <i class="fas fa-backward text-color-components"></i>
-                        </button>
-                        <button class="text-white mx-2">
-                            <i class="fas fa-play text-color-components"></i>
-                        </button>
-                        <button class="text-white mx-2">
-                            <i class="fas fa-forward text-color-components"></i>
-                        </button>
-                    </div>
-            
-                    <!-- Song progress bar -->
-                    <div class="flex-grow mx-4 w-1/2">
-                        <div class="relative w-full h-2 bg-color-secondary rounded">
-                            <div class="absolute top-0 h-2 bg-teal-400 rounded" style="width: 30%;"></div>
-                        </div>
-                        <div class="flex justify-between text-sm text-gray-400 mt-1">
-                            <span>0:51</span>
-                            <span>3:14</span>
-                        </div>
-                    </div>
-                </div>
-                
-        
-                <!-- Full screen button -->
-                <button class="text-white mx-2">
-                    <i class="fas fa-expand text-color-components"></i>
-                </button>
-            </div>
-        </div>
-        
-        
     </div>
 
+    <!-- Player bar -->
+    <div class="fixed inset-x-0 bottom-0 bg-color-principal p-2 md:p-4 z-20">
+        <div class="flex flex-col md:flex-row items-center justify-between">
+            <div class="flex items-center space-x-2 md:space-x-4 mb-2 md:mb-0">
+                <img src="img/fortuna.png" alt="Current song" class="w-12 h-12 md:w-16 md:h-16 rounded-lg">
+                <div class="text-white">
+                    <p class="font-bold text-sm md:text-base">Places to visit in 2024</p>
+                    <p class="text-xs md:text-sm text-gray-400">Discover Costa Rica</p>
+                </div>
+            </div>
+            <div class="flex-1 w-full md:mx-4">
+                <div class="flex items-center justify-center space-x-4 mb-2">
+                    <i class="fas fa-step-backward text-color-components cursor-pointer"></i>
+                    <i class="fas fa-play text-color-components text-2xl cursor-pointer"></i>
+                    <i class="fas fa-step-forward text-color-components cursor-pointer"></i>
+                </div>
+                <div class="w-full">
+                    <div class="h-1 bg-color-secondary rounded">
+                        <div class="h-1 bg-teal-400 rounded w-1/3"></div>
+                    </div>
+                    <div class="flex justify-between text-xs text-gray-400 mt-1">
+                        <span>0:51</span>
+                        <span>3:14</span>
+                    </div>
+                </div>
+            </div>
+            <button class="text-color-components mt-2 md:mt-0">
+                <i class="fas fa-expand"></i>
+            </button>
+        </div>
+    </div>
 
-    <script src="botonScroll.js"></script>
+    <script src="js/menuBoton.js"></script>
+    <script src="js/botonScroll.js"></script>
 </body>
-   
 </html>
