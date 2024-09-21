@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         // Iterate over each media item to populate the correct container
         mediaData.forEach(media => {
-            const { name, image_url, audio_url, video_url } = media;
+            const { name, image_url, audio_url} = media;
 
             // Create the media item container
             const mediaItem = document.createElement('div');
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             // Image element for the media item
             const img = document.createElement('img');
-            img.src = image_url ? `https://${image_url}` : 'path/to/default-image.jpg'; // Default image if null
+            img.src = image_url ? `https://${image_url}` : 'img/default.jpg'; // Default image if null
             img.className = 'w-full h-full object-cover rounded-lg transition duration-300 group-hover:brightness-75';
             img.alt = name;
 
@@ -33,17 +33,25 @@ document.addEventListener('DOMContentLoaded', async () => {
             // Container for the play button
             const playButtonContainer = document.createElement('div');
             playButtonContainer.className = 'absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300';
+
             const playButton = document.createElement('button');
             playButton.className = 'playButton p-2 bg-white rounded-full shadow-lg flex items-center justify-center';
             playButton.innerHTML = `<i class="fa fa-play text-color-principal"></i>`;
 
+
+             // Emite un evento personalizado con la información de la pista
+            playButton.addEventListener('click', () => {
+                document.dispatchEvent(new CustomEvent('playTrack', {
+                    detail: {
+                        name,
+                        image_url,
+                        audio_url,
+                    }
+                }));
+            });
+
             // Separate media into the correct container based on the URL
             if (audio_url && audio_url.endsWith('.mp3')) {
-                // Add event listener for audio
-                playButton.addEventListener('click', () => {
-                    const audio = new Audio(`https://${audio_url}`);
-                    audio.play();
-                });
 
                 // Append elements to the music item
                 playButtonContainer.appendChild(playButton);
@@ -74,7 +82,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
         });
     } catch (error) {
-        console.error('Error al obtener los datos del backend:', error);
-        alert('Hubo un error al cargar el contenido.');
+        console.error('Error getting data from backend', error);
+        alert('There was an error loading the content.');
     }
 });
