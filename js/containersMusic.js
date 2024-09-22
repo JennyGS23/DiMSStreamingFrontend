@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     let history = [];
 
     try {
-        const response = await fetch('http://localhost:5000/get-media');
+        const response = await fetch('di-ms-streaming-backend.vercel.app/get-media');
         const mediaData = await response.json();
 
         musicContainer.innerHTML = '';
