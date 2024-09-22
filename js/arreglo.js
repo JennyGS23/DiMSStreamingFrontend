@@ -1,32 +1,35 @@
 document.addEventListener('DOMContentLoaded', async () => {
     const musicContainer = document.getElementById('songLibraryContainer');
     const videosContainer = document.getElementById('videoLibraryContainer');
+    const historyContainer = document.getElementById('historyContainer'); 
+
+    // Array of history items
+    let history = [];
 
     try {
-        // Fetch the media data from the backend
         const response = await fetch('http://localhost:5000/get-media');
         const mediaData = await response.json();
 
-        // Clear the containers before displaying new media
         musicContainer.innerHTML = '';
         videosContainer.innerHTML = '';
 
+        // Filter the tracks from audio_url ending with .mp3
         const tracks = mediaData.filter(media => media.audio_url && media.audio_url.endsWith('.mp3'));
+
         tracks.forEach((media, index) => {
             const { name, image_url, audio_url } = media;
 
-            // Create the media item container
             const mediaItem = document.createElement('div');
             mediaItem.className = 'flex items-center mb-4 p-2 bg-color-principal rounded-lg mr-1';
 
             // Image element for the media item
             const img = document.createElement('img');
             img.src = image_url ? `https://${image_url}` : 'img/default.jpg'; // Default image if null
+            img.className = 'w-12 h-12 rounded-full mr-4';
             img.alt = name;
-            img.className = 'w-12 h-12 rounded-md mr-4'
+            
 
-
-            // Text container for the media name
+            //Text container for the media name
             const textContainer = document.createElement('div');
             textContainer.className = 'flex flex-col';
 
@@ -37,7 +40,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             textContainer.appendChild(nameElement);
 
-            // Play button
+            
+           // Play button
             const playButtonContainer = document.createElement('div');
             playButtonContainer.className = 'ml-auto';
 
@@ -52,27 +56,25 @@ document.addEventListener('DOMContentLoaded', async () => {
                         index,
                     }
                 }));
+
                 // Call the function that updates the history
-                updateHistory(name, image_url, audio_url, 'video');
+                updateHistory(name, image_url, audio_url, 'audio');
             });
 
             playButtonContainer.appendChild(playButton);
-
-            // Append elements to the media item
             mediaItem.appendChild(img);
             mediaItem.appendChild(textContainer);
             mediaItem.appendChild(playButtonContainer);
 
             // Append the media item to the music container
             musicContainer.appendChild(mediaItem);
-
         });
-        
+
+        // Filter the videos from audio_url ending with .mp4
         const videos = mediaData.filter(media => media.audio_url && media.audio_url.endsWith('.mp4'));
         videos.forEach(media => {
             const { name, image_url, audio_url } = media;
 
-            // Create the media item container
             const mediaItem = document.createElement('div');
             mediaItem.className = 'flex items-center mb-4 p-2 bg-color-principal rounded-lg mr-1';
 
@@ -80,22 +82,19 @@ document.addEventListener('DOMContentLoaded', async () => {
             const img = document.createElement('img');
             img.src = image_url ? `https://${image_url}` : 'img/default.jpg'; // Default image if null
             img.alt = name;
-            img.className = 'w-12 h-12 rounded-md mr-4'
-
-            
-
-            // Text container for the media name
-            const textContainer = document.createElement('div');
-            textContainer.className = 'flex flex-col';
+            img.className = 'w-12 h-12 rounded-full mr-4';
 
             // Media name element
             const nameElement = document.createElement('p');
             nameElement.className = 'text-sm text-white font-bold';
             nameElement.textContent = name;
 
+            // Text container for the media name
+            const textContainer = document.createElement('div');
+            textContainer.className = 'flex flex-col';
             textContainer.appendChild(nameElement);
-
-            // Play button
+            
+           // Play button
             const playButtonContainer = document.createElement('div');
             playButtonContainer.className = 'ml-auto';
 
@@ -103,18 +102,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             playButton.className = 'playButton p-2 bg-white rounded-full shadow-lg flex items-center justify-center ml-10';
             playButton.innerHTML = `<i class="fa fa-play text-color-principal"></i>`;
 
-            
-
-            playButtonContainer.appendChild(playButton);
-
-            // Append elements to the media item
-            mediaItem.appendChild(img);
-            mediaItem.appendChild(textContainer);
-            mediaItem.appendChild(playButtonContainer);
-
-           
-                
-            //} else if (audio_url && audio_url.endsWith('.mp4')) {
+    
             playButton.addEventListener('click', () => {
                 // Pausar la canción si se está reproduciendo
                 document.dispatchEvent(new CustomEvent('stopTrack'));
@@ -149,15 +137,23 @@ document.addEventListener('DOMContentLoaded', async () => {
                 // Call the function that updates the history
                 updateHistory(name, image_url, audio_url, 'video');
             });
-                // Append the media item to the video container
+
+            // Append elements to the video item
+            playButtonContainer.appendChild(playButton);
+            mediaItem.appendChild(img);
+            mediaItem.appendChild(overlay);
+            mediaItem.appendChild(playButtonContainer);
+
+            // Append the media item to the video container
             videosContainer.appendChild(mediaItem);
-        //}
         });
+
     } catch (error) {
         console.error('Error getting data from backend', error);
         alert('There was an error loading the content.');
     }
 
+    // Function to update the history
     function updateHistory(name, image_url, audio_url, type) {
         // Create history item
         const historyItem = document.createElement('div');
