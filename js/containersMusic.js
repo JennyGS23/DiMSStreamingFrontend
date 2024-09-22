@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             const img = document.createElement('img');
             img.src = image_url ? `https://${image_url}` : 'img/default.jpg';
-            img.className = 'w-full h-full object-cover rounded-lg transition duration-300 group-hover:brightness-75';
+            img.className = 'w-full h-full object-cover rounded-full transition duration-300 group-hover:brightness-75';
             img.alt = name;
 
             const overlay = document.createElement('div');
@@ -139,23 +139,30 @@ document.addEventListener('DOMContentLoaded', async () => {
         // Create history item
         const historyItem = document.createElement('div');
         historyItem.className = 'relative w-32 h-32 flex-shrink-0 group';
-
+    
         const img = document.createElement('img');
         img.src = image_url ? `https://${image_url}` : 'img/default.jpg';
-        img.className = 'w-full h-full object-cover rounded-lg transition duration-300 group-hover:brightness-75';
+    
+        // Apply rounded-full for audio, rounded-lg for video
+        if (type === 'audio') {
+            img.className = 'w-full h-full object-cover rounded-full transition duration-300 group-hover:brightness-75';
+        } else if (type === 'video') {
+            img.className = 'w-full h-full object-cover rounded-lg transition duration-300 group-hover:brightness-75';
+        }
+    
         img.alt = name;
-
+    
         const overlay = document.createElement('div');
         overlay.className = 'absolute bottom-0 left-0 w-full bg-color-principal bg-opacity-70 text-white p-2 rounded-b-lg text-sm';
         overlay.innerHTML = `<p class="text-xs">${name}</p>`;
-
+    
         const playButtonContainer = document.createElement('div');
         playButtonContainer.className = 'absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300';
-
+    
         const playButton = document.createElement('button');
         playButton.className = 'playButton p-2 bg-white rounded-full shadow-lg flex items-center justify-center';
         playButton.innerHTML = `<i class="fa fa-play text-color-principal"></i>`;
-
+    
         // Event listener to play the history item
         playButton.addEventListener('click', () => {
             if (type === 'audio') {
@@ -168,43 +175,45 @@ document.addEventListener('DOMContentLoaded', async () => {
             } else if (type === 'video') {
                 const popupContainer = document.createElement('div');
                 popupContainer.className = 'fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50';
-
+    
                 const video = document.createElement('video');
                 video.src = `https://${audio_url}`;
                 video.controls = true;
                 video.className = 'w-3/4 h-3/4 rounded-lg';
-
+    
                 const closeButton = document.createElement('button');
                 closeButton.className = 'absolute top-4 right-4 text-white text-2xl';
                 closeButton.innerHTML = `<i class="fas fa-times"></i>`;
-
+    
                 closeButton.addEventListener('click', () => {
                     video.pause();
                     popupContainer.remove();
                 });
-
+    
                 popupContainer.appendChild(video);
                 popupContainer.appendChild(closeButton);
                 document.body.appendChild(popupContainer);
             }
         });
-
+    
         // Append the button to the history item
         playButtonContainer.appendChild(playButton);
         historyItem.appendChild(img);
         historyItem.appendChild(overlay);
         historyItem.appendChild(playButtonContainer);
-
-        // Add the history item to the history container
-        historyContainer.appendChild(historyItem);
-
-        // Add the history item to the history array
-        history.push(historyItem);
-
+    
+        // Insert the history item at the beginning of the history container
+        historyContainer.insertBefore(historyItem, historyContainer.firstChild);
+    
+        // Add the history item at the beginning of the history array
+        history.unshift(historyItem);
+    
         // Limit the history to 8 items
         if (history.length > 8) {
-            const firstItem = history.shift(); // Remove of the array
+            const firstItem = history.pop(); // Remove the last item from the array
             firstItem.remove(); // Remove from the DOM
         }
     }
+    
+    
 });
