@@ -85,6 +85,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             playButton.innerHTML = `<i class="fa fa-play text-color-principal"></i>`;
 
             playButton.addEventListener('click', () => {
+                // Pausar la canción si se está reproduciendo
+                document.dispatchEvent(new CustomEvent('stopTrack'));
                 // Create popup container
                 const popupContainer = document.createElement('div');
                 popupContainer.className = 'fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50';

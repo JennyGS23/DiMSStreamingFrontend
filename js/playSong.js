@@ -17,6 +17,14 @@ document.addEventListener('DOMContentLoaded', () => {
             currentAudio.pause();
             currentAudio.currentTime = 0;
         }
+    // Escuchar el evento 'stopTrack' para pausar cualquier canción que esté sonando
+    document.addEventListener('stopTrack', () => {
+        if (currentAudio) {
+            currentAudio.pause();
+            currentAudio.currentTime = 0; // Reinicia la canción
+            playPauseButton.classList.replace('fa-pause', 'fa-play'); // Cambia el icono a play
+        }
+    });
 
         currentAudio = new Audio(`https://${track.audio_url}`);
         currentSongImage.src = `https://${track.image_url}`;
