@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             const img = document.createElement('img');
             img.src = image_url ? `https://${image_url}` : 'img/default.jpg'; // Default image if null
             img.alt = name;
-            img.className = 'w-12 h-12 rounded-md mr-4'
+            img.className = 'w-12 h-12 rounded-full mr-4'
 
 
             // Text container for the media name
@@ -158,6 +158,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         alert('There was an error loading the content.');
     }
 
+    // Declara la variable playbackHistory fuera de la función
+    let playbackHistory = [];
+
+    // Function to update the history
     function updateHistory(name, image_url, audio_url, type) {
         // Create history item
         const historyItem = document.createElement('div');
@@ -165,7 +169,14 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         const img = document.createElement('img');
         img.src = image_url ? `https://${image_url}` : 'img/default.jpg';
-        img.className = 'w-full h-full object-cover rounded-lg transition duration-300 group-hover:brightness-75';
+
+        // Apply rounded-full for audio, rounded-lg for video
+        if (type === 'audio') {
+            img.className = 'w-full h-full object-cover rounded-full transition duration-300 group-hover:brightness-75';
+        } else if (type === 'video') {
+            img.className = 'w-full h-full object-cover rounded-lg transition duration-300 group-hover:brightness-75';
+        }
+
         img.alt = name;
 
         const overlay = document.createElement('div');
@@ -218,16 +229,19 @@ document.addEventListener('DOMContentLoaded', async () => {
         historyItem.appendChild(overlay);
         historyItem.appendChild(playButtonContainer);
 
-        // Add the history item to the history container
-        historyContainer.appendChild(historyItem);
+        // Insert the history item at the beginning of the history container
+        historyContainer.insertBefore(historyItem, historyContainer.firstChild);
 
-        // Add the history item to the history array
-        history.push(historyItem);
+        // Add the history item at the beginning of the playbackHistory array
+        playbackHistory.unshift(historyItem);
 
-        // Limit the history to 8 items
-        if (history.length > 8) {
-            const firstItem = history.shift(); // Remove of the array
+        // Limit the playbackHistory to 8 items
+        if (playbackHistory.length > 8) {
+            const firstItem = playbackHistory.pop(); // Remove the last item from the array
             firstItem.remove(); // Remove from the DOM
         }
     }
+
+
+    
 });
