@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             const { name, image_url, audio_url } = media;
 
             const mediaItem = document.createElement('div');
-            mediaItem.className = 'relative w-32 h-32 flex-shrink-0 group z-20';
+            mediaItem.className = 'relative w-32 h-32 flex-shrink-0 group z-20 mb-10';
 
             const img = document.createElement('img');
             img.src = image_url ? `https://${image_url}` : 'img/default.jpg';
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 const video = document.createElement('video');
                 video.src = `https://${audio_url}`;
                 video.controls = true;
-                video.className = 'w-3/4 h-auto rounded-lg';
+                video.className = 'w-3/4 h-3/4 rounded-lg';
 
                 // Create close button
                 const closeButton = document.createElement('button');
@@ -170,7 +170,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 const video = document.createElement('video');
                 video.src = `https://${audio_url}`;
                 video.controls = true;
-                video.className = 'w-3/4 h-auto rounded-lg';
+                video.className = 'w-3/4 h-3/4 rounded-lg';
 
                 const closeButton = document.createElement('button');
                 closeButton.className = 'absolute top-4 right-4 text-white text-2xl';
