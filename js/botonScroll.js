@@ -1,4 +1,4 @@
-const imageContainer = document.getElementById('imageContainer');
+const imageContainer = document.getElementById('historyContainer');
 const prevBtn = document.getElementById('prevBtn');
 const nextBtn = document.getElementById('nextBtn');
 const prevBtnMusic = document.getElementById('prevBtnMusic');
@@ -7,14 +7,14 @@ const prevBtnVideos = document.getElementById('prevBtnVideos');
 const nextBtnVideos = document.getElementById('nextBtnVideos');
 
 prevBtn.addEventListener('click', () => {
-    imageContainer.scrollBy({
+    historyContainer.scrollBy({
         left: -300, 
         behavior: 'smooth'
     });
 });
 
 nextBtn.addEventListener('click', () => {
-    imageContainer.scrollBy({
+    historyContainer.scrollBy({
         left: 300,
         behavior: 'smooth'
     });
