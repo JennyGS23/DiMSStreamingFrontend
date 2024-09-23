@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', async () => {
+    const startTime = performance.now(); // Start measuring time
     const musicContainer = document.getElementById('musicContainer');
     const videosContainer = document.getElementById('videosContainer');
     const historyContainer = document.getElementById('historyContainer'); 
@@ -7,7 +8,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     let history = [];
 
     try {
-        const response = await fetch('https://di-ms-streaming-backend.vercel.app/get-media');
+        const response = await fetch('http://localhost:5000/get-media');
+
+
         const mediaData = await response.json();
 
         musicContainer.innerHTML = '';
@@ -132,6 +135,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     } catch (error) {
         console.error('Error getting data from backend', error);
         alert('There was an error loading the content.');
+    }finally {
+        const endTime = performance.now(); // Stop measuring time
+        const duration = endTime - startTime;
+        console.log(`Tiempo de carga en el frontend: ${(duration / 1000).toFixed(4)} segundos`); // Display the report in console
     }
 
     // Function to update the history

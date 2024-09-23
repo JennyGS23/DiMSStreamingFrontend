@@ -2,7 +2,7 @@
 async function displayRandomRecommendation() {
     try {
         // Fetch media data from the backend
-        const response = await fetch('https://di-ms-streaming-backend.vercel.app/get-media');
+        const response = await fetch('http://localhost:5000/get-media');
         const mediaData = await response.json();
 
         // Combine all URLs (mp3 and mp4) into a single array
